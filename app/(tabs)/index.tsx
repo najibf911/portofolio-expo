@@ -1,98 +1,223 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { Image, Text, ScrollView, View, StyleSheet } from "react-native";
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
-
-export default function HomeScreen() {
+export default function Home() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+    <ScrollView style={styles.page} contentContainerStyle={styles.pageContent}>
+      {/* Hero */}
+      <View style={styles.heroContainer}>
+        <View style={styles.heroTextContainer}>
+          <Text style={styles.heroGreeting}>
+            Halo! <Text style={styles.highlight}>Perkenalkan saya,</Text>
+          </Text>
+          <Text style={styles.heroName}>Muhammad Najib Fadhlurrohman</Text>
+          <Text style={styles.heroProfession}>
+            Web <Text style={styles.highlightBold}>Developer</Text>
+          </Text>
+          <Text style={styles.heroUniversity}>
+            Mahasiswa{" "}
+            <Text style={styles.highlight}>Universitas Bina Nusantara</Text>
+          </Text>
+          <Text style={styles.heroDescription}>
+            Di sini Anda dapat menemukan informasi tentang diri saya, proyek yang
+            telah saya kerjakan, dan keterampilan yang saya miliki.
+          </Text>
+        </View>
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+        <Image
+          source={require("../../assets/images/hero.png")}
+          style={styles.profileImage}
+        />
+      </View>
+
+      {/* Informasi */}
+      <View style={styles.infoSection}>
+        <Text style={styles.infoTitle}>Informasi Saya</Text>
+
+        <Text style={styles.infoItemTitle}>Universitas Bina Insani</Text>
+        <Text style={styles.infoItemDescription}>
+          Saya adalah seorang mahasiswa Universitas Bina Insani, jurusan Sistem
+          Informasi, fakultas Informatika dan Desain. Saat ini saya sedang
+          menempuh pendidikan di semester 7 dan aktif dalam mengikuti pelatihan
+          yang relevan dengan bidang saya.
+        </Text>
+
+        <Text style={styles.infoItemTitle}>Website & Software Development</Text>
+        <Text style={styles.infoItemDescription}>
+          Saya tertarik pada pengembangan perangkat lunak dan teknologi
+          informasi, berpengalaman membangun aplikasi web dengan HTML, CSS, dan
+          beberapa framework. Saya juga memiliki keterampilan pemrograman dalam
+          C, Java, dan Python.
+        </Text>
+      </View>
+
+      {/* Pendidikan & Pelatihan */}
+      <View style={styles.schoolSection}>
+        <Text style={styles.infoTitle}>Pendidikan & Pelatihan</Text>
+
+        <View style={styles.schoolItem}>
+          <Image
+            source={require("../../assets/images/sman8-logo.png")}
+            style={styles.schoolLogo}
+          />
+          <Text style={styles.schoolName}>SMA Negeri 8 Bekasi</Text>
+        </View>
+
+        <View style={styles.schoolItem}>
+          <Image
+            source={require("../../assets/images/univbinainsani-logo.png")}
+            style={styles.schoolLogo}
+          />
+          <Text style={styles.schoolName}>Universitas Bina Insani</Text>
+        </View>
+
+        <View style={styles.schoolItem}>
+          <Image
+            source={require("../../assets/images/webhozz-logo.jpeg")}
+            style={styles.schoolLogo}
+          />
+          <Text style={styles.schoolName}>Webhozz</Text>
+        </View>
+
+        <View style={styles.schoolItem}>
+          <Image
+            source={require("../../assets/images/haltev-logo.png")}
+            style={styles.schoolLogo}
+          />
+          <Text style={styles.schoolName}>Haltev Bekasi</Text>
+        </View>
+
+        <View style={styles.schoolItem}>
+          <Image
+            source={require("../../assets/images/maxy-logo.png")}
+            style={styles.schoolLogo}
+          />
+          <Text style={styles.schoolName}>Maxy Academy</Text>
+        </View>
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  page: {
+    backgroundColor: "#F8FAFC",
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  pageContent: {
+    padding: 16,
+    paddingBottom: 32,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+
+  // Hero
+  heroContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: 20,
+    backgroundColor: "#FFFFFF",
+    borderRadius: 16,
+    marginBottom: 16,
+    // shadow iOS
+    shadowColor: "#000",
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    // shadow Android
+    elevation: 2,
+  },
+  heroTextContainer: {
+    flex: 1,
+    marginRight: 16,
+  },
+  heroGreeting: {
+    fontSize: 16,
+    marginBottom: 6,
+    color: "#111827",
+  },
+  heroName: {
+    fontSize: 22,
+    fontWeight: "700",
+    color: "#0F172A",
+    marginBottom: 6,
+  },
+  heroProfession: {
+    fontSize: 18,
+    color: "#111827",
+    marginBottom: 6,
+  },
+  heroUniversity: {
+    fontSize: 14,
+    color: "#6B7280",
+    marginBottom: 10,
+  },
+  heroDescription: {
+    fontSize: 14,
+    color: "#4B5563",
+  },
+  profileImage: {
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+    borderWidth: 2,
+    borderColor: "#EEF2FF",
+  },
+  highlight: {
+    color: "#4F46E5",
+    fontWeight: "600",
+  },
+  highlightBold: {
+    color: "#4F46E5",
+    fontWeight: "700",
+  },
+
+  // Info
+  infoSection: {
+    padding: 16,
+    backgroundColor: "#FFFFFF",
+    borderRadius: 16,
+    marginBottom: 16,
+  },
+  infoTitle: {
+    fontSize: 24,
+    fontWeight: "700",
+    marginBottom: 10,
+    color: "#0F172A",
+  },
+  infoItemTitle: {
+    fontSize: 16,
+    fontWeight: "bold",
+    fontStyle: "italic",
+    marginTop: 8,
+    marginBottom: 4,
+    color: "#0051ffff",
+  },
+  infoItemDescription: {
+    fontSize: 14,
+    color: "#4B5563",
+    lineHeight: 20,
+  },
+
+  // School
+  schoolSection: {
+    padding: 16,
+    backgroundColor: "#FFFFFF",
+    borderRadius: 16,
+    marginBottom: 16,
+  },
+  schoolItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 14,
+  },
+  schoolLogo: {
+    width: 56,
+    height: 56,
+    borderRadius: 8,
+    marginRight: 12,
+    resizeMode: "contain",
+  },
+  schoolName: {
+    fontSize: 15,
+    fontWeight: "600",
+    color: "#111827",
   },
 });
